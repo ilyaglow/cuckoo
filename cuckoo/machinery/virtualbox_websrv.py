@@ -125,7 +125,9 @@ class VirtualBoxRemote(Machinery):
 
         log.debug("Restoring machine and powering it off")
         machine.restore()
-        machine.poweroff()
+
+        if machine.state() != self.POWEROFF:
+            machine.poweroff()
 
         log.debug("Enable network tracing")
         machine.enable_net_trace(self.options.virtualbox_websrv.remote_storage +
