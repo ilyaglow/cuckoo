@@ -163,6 +163,7 @@ class VirtualBoxRemote(Machinery):
 
         try:
             machine.poweroff()
+            machine.disable_net_trace()
         except (remotevbox.exceptions.MachineDiscardError,
                 remotevbox.exceptions.MachineSaveError,
                 remotevbox.exceptions.ProgressTimeout) as e:
